@@ -13,6 +13,7 @@ class CurvedNavigationBar extends StatefulWidget {
   final Curve animationCurve;
   final Duration animationDuration;
   final double height;
+  final double shadow;//Add shadow support
 
   CurvedNavigationBar({
     Key key,
@@ -25,6 +26,7 @@ class CurvedNavigationBar extends StatefulWidget {
     this.animationCurve = Curves.easeOut,
     this.animationDuration = const Duration(milliseconds: 600),
     this.height = 75.0,
+    this.shadow,//Add shadow support
   })  : assert(items != null),
         assert(items.length >= 1),
         assert(0 <= index && index < items.length),
@@ -113,6 +115,7 @@ class CurvedNavigationBarState extends State<CurvedNavigationBar>
                 child: Material(
                   color: widget.buttonBackgroundColor ?? widget.color,
                   type: MaterialType.circle,
+                  elevation: widget.shadow,//Add shadow support
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: _icon,
@@ -127,7 +130,12 @@ class CurvedNavigationBarState extends State<CurvedNavigationBar>
             bottom: 0 - (75.0 - widget.height),
             child: CustomPaint(
               painter: NavCustomPainter(
-                  _pos, _length, widget.color, Directionality.of(context)),
+                  _pos, 
+                  _length, 
+                  widget.color,
+                   Directionality.of(context),
+                  widget.shadow //Add shadow support
+              ),
               child: Container(
                 height: 75.0,
               ),

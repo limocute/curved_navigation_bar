@@ -20,6 +20,7 @@ class NavButton extends StatelessWidget {
         onTap: () {
           onTap(index);
         },
+        behavior: HitTestBehavior.opaque,//Opaque targets can be hit by hit tests, causing them to both receive events within their bounds and prevent targets visually behind them from also receiving events
         child: Container(
             height: 75.0,
             child: Transform.translate(
@@ -27,7 +28,8 @@ class NavButton extends StatelessWidget {
                   0, difference < 1.0 / length ? verticalAlignment * 40 : 0),
               child: Opacity(
                   opacity: difference < 1.0 / length * 0.99 ? opacity : 1.0,
-                  child: child),
+                  child: child
+              ),
             )),
       ),
     );

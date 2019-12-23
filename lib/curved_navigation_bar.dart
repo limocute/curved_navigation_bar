@@ -26,7 +26,7 @@ class CurvedNavigationBar extends StatefulWidget {
     this.animationCurve = Curves.easeOut,
     this.animationDuration = const Duration(milliseconds: 600),
     this.height = 75.0,
-    this.shadow,//Add shadow support
+    this.shadow = 0.0,//Add shadow support
   })  : assert(items != null),
         assert(items.length >= 1),
         assert(0 <= index && index < items.length),

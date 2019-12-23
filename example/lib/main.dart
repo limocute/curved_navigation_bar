@@ -1,32 +1,52 @@
 import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 
-void main() => runApp(MaterialApp(home: BottomNavBar()));
+void main() => runApp(MyApp());
 
-class BottomNavBar extends StatefulWidget {
+class MyApp extends StatelessWidget {
   @override
-  _BottomNavBarState createState() => _BottomNavBarState();
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: MyHomePage(title: 'Flutter Demo Home Page'),
+    );
+  }
 }
 
-class _BottomNavBarState extends State<BottomNavBar> {
+class MyHomePage extends StatefulWidget {
+  MyHomePage({Key key, this.title}) : super(key: key);
+  final String title;
+
+  @override
+  _MyHomePageState createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
   int _page = 0;
   GlobalKey _bottomNavigationKey = GlobalKey();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        bottomNavigationBar: CurvedNavigationBar(
+      appBar: AppBar(
+        title: Text(widget.title),
+      ),
+      bottomNavigationBar: CurvedNavigationBar(
           key: _bottomNavigationKey,
           index: 0,
           height: 50.0,
           items: <Widget>[
-            Icon(Icons.add, size: 30),
-            Icon(Icons.list, size: 30),
-            Icon(Icons.compare_arrows, size: 30),
-            Icon(Icons.call_split, size: 30),
-            Icon(Icons.perm_identity, size: 30),
+            Icon(Icons.add, size: 20),
+            Icon(Icons.list, size: 20),
+            Icon(Icons.compare_arrows, size: 20),
+            Icon(Icons.call_split, size: 20),
+            Icon(Icons.perm_identity, size: 20),
           ],
           color: Colors.white,
+          shadow: 0.0,
           buttonBackgroundColor: Colors.white,
           backgroundColor: Colors.blueAccent,
           animationCurve: Curves.easeInOut,
@@ -37,7 +57,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
             });
           },
         ),
-        body: Container(
+     body: Container(
           color: Colors.blueAccent,
           child: Center(
             child: Column(
@@ -54,6 +74,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
               ],
             ),
           ),
-        ));
+     )
+    );
   }
 }

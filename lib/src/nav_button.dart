@@ -20,7 +20,10 @@ class NavButton extends StatelessWidget {
         onTap: () {
           onTap(index);
         },
-        behavior: HitTestBehavior.opaque,//Opaque targets can be hit by hit tests, causing them to both receive events within their bounds and prevent targets visually behind them from also receiving events
+        //官方0.3.2版使用此设置，使整个Bar可点击（Allow tapping on the whole NavButton Allow tapping on the whole NavButton other than only on the child）
+        //behavior: HitTestBehavior.translucent,
+        //修改版Opaque targets can be hit by hit tests, causing them to both receive events within their bounds and prevent targets visually behind them from also receiving events
+        behavior: HitTestBehavior.opaque,
         child: Container(
             height: 75.0,
             child: Transform.translate(
